@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="PHPContactForm : PHP Code for a Contact form">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>PHPContactForm</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/lotosotol/PHPContactForm">View on GitHub</a>
+
+          <h1 id="project_title">PHPContactForm</h1>
+          <h2 id="project_tagline">PHP Code for a Contact form</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/lotosotol/PHPContactForm/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/lotosotol/PHPContactForm/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>&lt;?php
+// Check for empty fields
+if(empty($_POST['name'])        ||
+   empty($_POST['email'])       ||
+   empty($_POST['phone'])       ||
+   empty($_POST['message']) ||
+   !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
+   {
+    echo "No arguments Provided!";
+    return false;
+   }</p>
+
+<p>$name = $_POST['name'];
+$email_address = $_POST['email'];
+$phone = $_POST['phone'];
+$message = $_POST['message'];</p>
+
+<p>// Create the email and send the message
+$to = '<a href="mailto:thefree1@thefreejob.com">thefree1@thefreejob.com</a>'; // Add your email address inbetween the '' replacing <a href="mailto:yourname@yourdomain.com">yourname@yourdomain.com</a> - This is where the form will send a message to.
+$email_subject = "Website Contact Form:  $name";
+$email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
+$headers = "From: <a href="mailto:noreply@thefreejob.com">noreply@thefreejob.com</a>\n"; // This is the email address the generated message will be from. We recommend using something like <a href="mailto:noreply@yourdomain.com">noreply@yourdomain.com</a>.
+$headers .= "Reply-To: $email_address"; 
+mail($to,$email_subject,$email_body,$headers);
+return true;<br>
+?&gt;</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">PHPContactForm maintained by <a href="https://github.com/lotosotol">lotosotol</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
